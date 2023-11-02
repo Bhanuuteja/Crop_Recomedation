@@ -1,9 +1,6 @@
 import streamlit as st
 from Analysis import RFC, data
-st.set_page_config(
-    page_title="Crop Recommended",
-    page_icon="🤖",
-)
+
 
 st.title(":green[Crop Recommendor]")
 st.markdown("<p style = 'border : 1px solid; padding : 3px; align-text : center;' ><strong style=' text-color = red ';>Note :</strong> Please select the attribute values from sidebar</p>",unsafe_allow_html=True)
