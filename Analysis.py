@@ -30,6 +30,22 @@ RFC.fit(Xtrain, Ytrain)
 print(accuracy_score(Ytest, RFC.predict(Xtest)))
 # scores = scores.append({"Model":"Random Forest","Accuracy": accuracy_score(Ytest, RFC.predict(Xtest))*100},ignore_index=True)
 
+# Logistic Regression
+logistic_model = LogisticRegression()
+logistic_model.fit(Xtrain, Ytrain)
+logistic_accuracy = accuracy_score(Ytest, logistic_model.predict(Xtest))
+
+# K-Means Clustering (Assuming a predefined number of clusters)
+kmeans = KMeans(n_clusters=len(data['label'].unique()))
+kmeans_clusters = kmeans.fit_predict(data_scale_min)
+kmeans_accuracy = accuracy_score(Ytest, kmeans_clusters)
+
+# Display accuracy of all models
+st.write("Model Comparisons:")
+st.write(f"Random Forest Accuracy: {rf_accuracy * 100:.2f}%")
+st.write(f"Logistic Regression Accuracy: {logistic_accuracy * 100:.2f}%")
+st.write(f"K-Means Accuracy: {kmeans_accuracy * 100:.2f}%")
+
 #creating a header with Header section link
 # st.markdown("<h1 style='text-align: center; color: #0b0c0c;'>Crop Recommendation Model</h1>", unsafe_allow_html=True)
 
