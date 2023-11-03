@@ -39,6 +39,12 @@ logistic_model.fit(Xtrain, Ytrain)
 logistic_accuracy = accuracy_score(Ytest, logistic_model.predict(Xtest))
 
 # K-Means Clustering (Assuming a predefined number of clusters)
+from sklearn.metrics import silhouette_score
+
+# Assuming kmeans is your K-Means model
+silhouette_avg = silhouette_score(data_scale_min, kmeans.labels_)
+print(f"Silhouette Score for K-Means: {silhouette_avg}")
+
 kmeans = KMeans(n_clusters=len(data['label'].unique()))
 kmeans_clusters = kmeans.fit_predict(data_scale_min)
 kmeans_accuracy = accuracy_score(Ytest, kmeans_clusters)
