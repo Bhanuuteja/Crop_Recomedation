@@ -81,6 +81,16 @@ st.write("Description of the data.")
 st.write(data.describe())
 st.divider()
 
+# Create a bar chart to visualize the accuracies
+model_names = ["Random Forest", "Logistic Regression", "K-Means"]
+accuracies = [rf_accuracy, logistic_accuracy, silhouette_avg]
+
+fig, ax = plt.subplots()
+ax.bar(model_names, accuracies)
+ax.set_ylabel("Accuracy")
+ax.set_title("Model Comparison")
+st.pyplot(fig)
+
 import seaborn as sns
 
 st.write("Checking the outliers of the data.")
