@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import streamlit as st
 import warnings
+from sklearn.cluster import KMeans
+from sklearn.linear_model import LogisticRegression
+
 warnings.simplefilter("ignore")
 
 data = pd.read_csv("Crop_recommendation.csv")
@@ -28,6 +31,23 @@ RFC = RandomForestClassifier()
 RFC.fit(Xtrain, Ytrain)
 print(accuracy_score(Ytest, RFC.predict(Xtest)))
 # scores = scores.append({"Model":"Random Forest","Accuracy": accuracy_score(Ytest, RFC.predict(Xtest))*100},ignore_index=True)
+
+# K-Means clustering
+kmeans = KMeans(n_clusters=3)  # You can choose the number of clusters you need
+data['cluster'] = kmeans.fit_predict(data_scale_min)
+
+# Logistic Regression
+logistic_model = LogisticRegression(max_iter=1000)  # You can adjust the parameters as needed
+Xtrain, Xtest, Ytrain, Ytest = train_test_split(data_scale_min, data['label'], test_size=0.25, random_state=11)
+logistic_model.fit(Xtrain, Ytrain)
+logistic_accuracy = accuracy_score(Ytest, logistic_model.predict(Xtest))
+
+# Display K-Means clusters
+st.write("K-Means Clusters:")
+st.write(data[['label', 'cluster']])
+
+# Display Logistic Regression accuracy
+st.write(f"Logistic Regression Accuracy: {logistic_accuracy * 100:.2f}%")
 
 #creating a header with Header section link
 # st.markdown("<h1 style='text-align: center; color: #0b0c0c;'>Crop Recommendation Model</h1>", unsafe_allow_html=True)
