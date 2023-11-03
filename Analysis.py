@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import streamlit as st
 import warnings
+from sklearn.linear_model import LogisticRegression
+from sklearn.cluster import KMeans
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
 warnings.simplefilter("ignore")
 
