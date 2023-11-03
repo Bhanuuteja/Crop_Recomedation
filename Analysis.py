@@ -13,11 +13,6 @@ from sklearn.cluster import KMeans
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 
-st.set_page_config(
-    page_title="Crop Analysis",
-    page_icon="🎋",
-    layout="wide"
-)
 
 warnings.simplefilter("ignore")
 
@@ -84,34 +79,6 @@ st.divider()
 st.write("Description of the data.")
 st.write(data.describe())
 st.divider()
-
-# Create a dictionary to store the model names and their accuracies
-model_accuracies = {
-    "Random Forest": rfc_accuracy,
-    "K-Means": None,  # Will be calculated later
-    "Logistic Regression": logistic_accuracy,
-}
-
-# Calculate K-Means accuracy
-data['kmeans_prediction'] = kmeans.predict(data_scale_min)
-kmeans_accuracy = accuracy_score(data['label'], data['kmeans_prediction'])
-model_accuracies["K-Means"] = kmeans_accuracy
-
-# Display the accuracies
-st.write("Model Accuracies:")
-st.write(model_accuracies)
-
-# Plot the accuracy comparison graph
-model_names = list(model_accuracies.keys())
-accuracies = list(model_accuracies.values())
-
-plt.figure(figsize=(10, 6))
-plt.bar(model_names, accuracies, color=['blue', 'orange', 'green'])
-plt.ylabel('Accuracy')
-plt.title('Model Accuracy Comparison')
-plt.ylim(0, 1.0)  # Set the y-axis limit to 0-1 for accuracy percentage
-plt.show()
-st.pyplot(plt)
 
 import seaborn as sns
 
