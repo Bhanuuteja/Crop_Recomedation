@@ -11,6 +11,12 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 
 warnings.simplefilter("ignore")
 
+st.set_page_config(
+    page_title="Crop Analysis",
+    page_icon="🎋",
+    layout="wide"
+)
+
 data = pd.read_csv("Crop_recommendation.csv")
 
 from sklearn.preprocessing import StandardScaler
@@ -57,7 +63,7 @@ st.write(f"K-Means Silhouette Score: {kmeans_accuracy:.2f}")
 #creating a header with Header section link
 # st.markdown("<h1 style='text-align: center; color: #0b0c0c;'>Crop Recommendation Model</h1>", unsafe_allow_html=True)
 
-st.set_page_config(
+#st.set_page_config(
     page_title="Crop Analysis",
     page_icon="🎋",
     layout="wide"
