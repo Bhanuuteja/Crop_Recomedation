@@ -63,11 +63,7 @@ st.write(f"K-Means Silhouette Score: {kmeans_accuracy:.2f}")
 #creating a header with Header section link
 # st.markdown("<h1 style='text-align: center; color: #0b0c0c;'>Crop Recommendation Model</h1>", unsafe_allow_html=True)
 
-#st.set_page_config(
-    page_title="Crop Analysis",
-    page_icon="🎋",
-    layout="wide"
-)
+
 # st.sidebar.success("Please select page here")
 st.markdown("<h1 style='text-align: center; color: green;'>Crop Recommendation Analysis</h1>", unsafe_allow_html=True)
 st.write("This is a simple web application which will help in recommending the type of crop.")
