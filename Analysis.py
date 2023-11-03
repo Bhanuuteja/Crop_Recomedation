@@ -5,14 +5,6 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import streamlit as st
 import warnings
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-from sklearn.cluster import KMeans
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-
 
 warnings.simplefilter("ignore")
 
