@@ -31,6 +31,7 @@ from sklearn.ensemble import RandomForestClassifier
 RFC = RandomForestClassifier()
 RFC.fit(Xtrain, Ytrain)
 print(accuracy_score(Ytest, RFC.predict(Xtest)))
+rf_accuracy = accuracy_score(Ytest, RFC.predict(Xtest))
 # scores = scores.append({"Model":"Random Forest","Accuracy": accuracy_score(Ytest, RFC.predict(Xtest))*100},ignore_index=True)
 
 # Logistic Regression
