@@ -41,20 +41,17 @@ logistic_accuracy = accuracy_score(Ytest, logistic_model.predict(Xtest))
 # K-Means Clustering (Assuming a predefined number of clusters)
 from sklearn.metrics import silhouette_score
 
-# Assuming kmeans is your K-Means model
-kmeans_clusters = kmeans.fit_predict(data_scale_min)
-silhouette_avg = silhouette_score(data_scale_min, kmeans_clusters)
-print(f"Silhouette Score for K-Means: {silhouette_avg}")
-
+# K-Means Clustering (Assuming a predefined number of clusters)
 kmeans = KMeans(n_clusters=len(data['label'].unique()))
 kmeans_clusters = kmeans.fit_predict(data_scale_min)
-kmeans_accuracy = accuracy_score(Ytest, kmeans_clusters)
+silhouette_avg = silhouette_score(data_scale_min, kmeans_clusters)
+kmeans_accuracy = silhouette_avg  # Using silhouette score as a measure
 
 # Display accuracy of all models
 st.write("Model Comparisons:")
 st.write(f"Random Forest Accuracy: {rf_accuracy * 100:.2f}%")
 st.write(f"Logistic Regression Accuracy: {logistic_accuracy * 100:.2f}%")
-st.write(f"K-Means Accuracy: {kmeans_accuracy * 100:.2f}%")
+st.write(f"K-Means Silhouette Score: {kmeans_accuracy:.2f}")
 
 #creating a header with Header section link
 # st.markdown("<h1 style='text-align: center; color: #0b0c0c;'>Crop Recommendation Model</h1>", unsafe_allow_html=True)
