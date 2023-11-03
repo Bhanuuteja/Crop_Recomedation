@@ -13,6 +13,12 @@ from sklearn.cluster import KMeans
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 
+st.set_page_config(
+    page_title="Crop Analysis",
+    page_icon="🎋",
+    layout="wide"
+)
+
 warnings.simplefilter("ignore")
 
 data = pd.read_csv("Crop_recommendation.csv")
