@@ -31,7 +31,7 @@ print(accuracy_score(Ytest, RFC.predict(Xtest)))
 # scores = scores.append({"Model":"Random Forest","Accuracy": accuracy_score(Ytest, RFC.predict(Xtest))*100},ignore_index=True)
 
 # Logistic Regression
-logistic_model = LogisticRegression()
+logistic_model = LogisticRegression(max_iter=1000)
 logistic_model.fit(Xtrain, Ytrain)
 logistic_accuracy = accuracy_score(Ytest, logistic_model.predict(Xtest))
 
