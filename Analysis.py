@@ -102,17 +102,6 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=.5)
 plt.title("Correlation Matrix for Random Forest Model")
 plt.show()
 
-plt.scatter(data_scale_min.iloc[:, 0], data_scale_min.iloc[:, 1], c=kmeans_clusters, cmap='rainbow')
-plt.xlabel("Feature 1")
-plt.ylabel("Feature 2")
-plt.title("K-Means Clustering Plot")
-plt.show()
-
-sns.regplot(x=Xtest, y=logistic_model.predict(Xtest), scatter_kws={'s': 5})
-plt.xlabel("Actual Values")
-plt.ylabel("Predicted Values")
-plt.title("Regression Plot for Logistic Regression")
-plt.show()
 
 st.write("Checking the outliers of the data.")
 col = data.columns
