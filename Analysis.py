@@ -98,6 +98,18 @@ for column in range(len(col)):
         # fig.set_size_inches(1,1)
         ax.set_xlabel(col[column], c="r") 
         st.pyplot(fig)
+        
+conf_matrix = confusion_matrix(true_labels, predicted_labels)
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', cbar=False, 
+            xticklabels=['Predicted 0', 'Predicted 1'],
+            yticklabels=['Actual 0', 'Actual 1'])
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.title('Confusion Matrix')
+plt.show()
+
 # Display accuracy of all models
 st.write("Model Comparisons:")
 st.write(f"Random Forest Accuracy: {rf_accuracy * 100:.2f}%")
