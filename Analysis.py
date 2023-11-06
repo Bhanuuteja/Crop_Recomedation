@@ -54,11 +54,7 @@ kmeans_clusters = kmeans.fit_predict(data_scale_min)
 silhouette_avg = silhouette_score(data_scale_min, kmeans_clusters)
 kmeans_accuracy = silhouette_avg  # Using silhouette score as a measure
 
-# Display accuracy of all models
-st.write("Model Comparisons:")
-st.write(f"Random Forest Accuracy: {rf_accuracy * 100:.2f}%")
-st.write(f"Logistic Regression Accuracy: {logistic_accuracy * 100:.2f}%")
-st.write(f"K-Means Silhouette Score: {kmeans_accuracy:.2f}")
+
 
 #creating a header with Header section link
 # st.markdown("<h1 style='text-align: center; color: #0b0c0c;'>Crop Recommendation Model</h1>", unsafe_allow_html=True)
@@ -81,15 +77,26 @@ st.write("Description of the data.")
 st.write(data.describe())
 st.divider()
 
-# Create a bar chart to visualize the accuracies
-model_names = ["Random Forest", "Logistic Regression", "K-Means"]
-accuracies = [rf_accuracy, logistic_accuracy, silhouette_avg]
+# Display accuracy of all models
+st.write("Model Comparisons:")
+st.write(f"Random Forest Accuracy: {rf_accuracy * 100:.2f}%")
+st.write(f"Logistic Regression Accuracy: {logistic_accuracy * 100:.2f}%")
+st.write(f"K-Means Silhouette Score: {kmeans_accuracy:.2f}")
 
-fig, ax = plt.subplots()
-ax.bar(model_names, accuracies)
-ax.set_ylabel("Accuracy")
-ax.set_title("Model Comparison")
-st.pyplot(fig)
+model_names = ["Random Forest", "Logistic Regression", "K-Means"]
+model_accuracies = [0.9873, 0.9509, 0.37]  
+# Create a bar chart
+plt.figure(figsize=(8, 6))
+plt.bar(model_names, model_accuracies, color=['blue', 'green', 'red'])
+plt.xlabel("Models")
+plt.ylabel("Accuracy or Silhouette Score")
+plt.title("Model Comparisons")
+plt.ylim(0, 1)
+
+for i, v in enumerate(model_accuracies):
+    plt.text(i, v, f"{v:.2f}", ha='center', va='bottom', fontsize=12)
+plt.show()
+
 
 import seaborn as sns
 
