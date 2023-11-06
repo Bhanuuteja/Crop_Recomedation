@@ -99,15 +99,34 @@ for column in range(len(col)):
         ax.set_xlabel(col[column], c="r") 
         st.pyplot(fig)
         
-conf_matrix = confusion_matrix(true_labels, predicted_labels)
+correlation_matrix = data_scale.corr()
 
+# Create a heatmap for the correlation matrix
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f", cbar=True)
+plt.title("Correlation Matrix")
+plt.show()
+
+# Replace 'true_labels' and 'predicted_labels' with your actual data
+conf_matrix_rf = confusion_matrix(Ytest, RFC.predict(Xtest))
+conf_matrix_logistic = confusion_matrix(Ytest, logistic_model.predict(Xtest))
+
+# Create a heatmap for Random Forest
 plt.figure(figsize=(8, 6))
-sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', cbar=False, 
-            xticklabels=['Predicted 0', 'Predicted 1'],
-            yticklabels=['Actual 0', 'Actual 1'])
+sns.heatmap(conf_matrix_rf, annot=True, fmt='d', cmap='Blues', cbar=False,
+            xticklabels=labels, yticklabels=labels)
 plt.xlabel('Predicted')
 plt.ylabel('Actual')
-plt.title('Confusion Matrix')
+plt.title('Random Forest Confusion Matrix')
+plt.show()
+
+# Create a heatmap for Logistic Regression
+plt.figure(figsize=(8, 6))
+sns.heatmap(conf_matrix_logistic, annot=True, fmt='d', cmap='Blues', cbar=False,
+            xticklabels=labels, yticklabels=labels)
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.title('Logistic Regression Confusion Matrix')
 plt.show()
 
 # Display accuracy of all models
