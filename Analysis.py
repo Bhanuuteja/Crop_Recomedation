@@ -77,29 +77,7 @@ st.write("Description of the data.")
 st.write(data.describe())
 st.divider()
 
-# Display accuracy of all models
-st.write("Model Comparisons:")
-st.write(f"Random Forest Accuracy: {rf_accuracy * 100:.2f}%")
-st.write(f"Logistic Regression Accuracy: {logistic_accuracy * 100:.2f}%")
-st.write(f"K-Means Accuracy: {kmeans_accuracy *100:.2f}%")
-
-model_names = ["Random Forest", "Logistic Regression", "K-Means"]
-accuracies = [rf_accuracy, logistic_accuracy, silhouette_avg]
-
-fig, ax = plt.subplots()
-ax.bar(model_names, accuracies)
-ax.set_ylabel("Accuracy")
-ax.set_title("Model Comparison")
-st.pyplot(fig)
-
 import seaborn as sns
-
-st.write("Correlation_matrix")
-correlation_matrix = data.corr()
-plt.figure(figsize=(10, 8))
-sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=.5)
-plt.title("Correlation Matrix")
-plt.show()
 
 st.write("Checking the outliers of the data.")
 col = data.columns
@@ -120,6 +98,20 @@ for column in range(len(col)):
         # fig.set_size_inches(1,1)
         ax.set_xlabel(col[column], c="r") 
         st.pyplot(fig)
+# Display accuracy of all models
+st.write("Model Comparisons:")
+st.write(f"Random Forest Accuracy: {rf_accuracy * 100:.2f}%")
+st.write(f"Logistic Regression Accuracy: {logistic_accuracy * 100:.2f}%")
+st.write(f"K-Means Accuracy: {kmeans_accuracy *100:.2f}%")
+
+model_names = ["Random Forest", "Logistic Regression", "K-Means"]
+accuracies = [rf_accuracy, logistic_accuracy, silhouette_avg]
+
+fig, ax = plt.subplots()
+ax.bar(model_names, accuracies)
+ax.set_ylabel("Accuracy")
+ax.set_title("Model Comparison")
+st.pyplot(fig)
 from streamlit_extras.switch_page_button import switch_page
 if st.button("Predict ?"):
     switch_page("prediction")
