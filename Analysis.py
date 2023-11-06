@@ -121,7 +121,7 @@ ax.set_ylabel("Accuracy")
 ax.set_title("Model Comparison")
 st.pyplot(fig)
 from streamlit_extras.switch_page_button import switch_page
-if st.button("Predict ?"):
+if st.button("Predict the Crop using Random Forest "):
     switch_page("prediction")
 
 
