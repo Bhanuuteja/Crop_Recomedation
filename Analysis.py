@@ -99,25 +99,6 @@ for column in range(len(col)):
         ax.set_xlabel(col[column], c="r") 
         st.pyplot(fig)
         
-# Create confusion matrix plots
-st.write("Confusion Matrix for Random Forest:")
-conf_matrix_rf = confusion_matrix(Ytest, RFC.predict(Xtest))
-plt.figure(figsize=(8, 6))
-sns.heatmap(conf_matrix_rf, annot=True, fmt='d', cmap='Blues', cbar=False,
-            xticklabels=labels, yticklabels=labels)
-plt.xlabel('Predicted')
-plt.ylabel('Actual')
-st.pyplot(plt)
-
-st.write("Confusion Matrix for Logistic Regression:")
-conf_matrix_logistic = confusion_matrix(Ytest, logistic_model.predict(Xtest))
-plt.figure(figsize=(8, 6))
-sns.heatmap(conf_matrix_logistic, annot=True, fmt='d', cmap='Blues', cbar=False,
-            xticklabels=labels, yticklabels=labels)
-plt.xlabel('Predicted')
-plt.ylabel('Actual')
-st.pyplot(plt)
-
 # Create a correlation matrix plot
 st.write("Correlation Matrix:")
 correlation_matrix = data_scale.corr()
