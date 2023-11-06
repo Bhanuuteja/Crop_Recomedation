@@ -94,14 +94,12 @@ st.pyplot(fig)
 
 import seaborn as sns
 
-data_for_correlation = Xtrain
-correlation_matrix = data_for_correlation.corr()
-# Create a heatmap of the correlation matrix
+st.write("Correlation_matrix")
+correlation_matrix = data.corr()
 plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=.5)
-plt.title("Correlation Matrix for Random Forest Model")
+plt.title("Correlation Matrix")
 plt.show()
-
 
 st.write("Checking the outliers of the data.")
 col = data.columns
