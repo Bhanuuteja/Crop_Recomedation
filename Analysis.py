@@ -102,7 +102,7 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=.5)
 plt.title("Correlation Matrix for Random Forest Model")
 plt.show()
 
-plt.scatter(data_scale_min['Feature1'], data_scale_min['Feature2'], c=kmeans_clusters, cmap='rainbow')
+plt.scatter(data_scale_min.iloc[:, 0], data_scale_min.iloc[:, 1], c=kmeans_clusters, cmap='rainbow')
 plt.xlabel("Feature 1")
 plt.ylabel("Feature 2")
 plt.title("K-Means Clustering Plot")
