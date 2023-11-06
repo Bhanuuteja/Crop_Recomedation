@@ -84,21 +84,35 @@ st.write(f"Logistic Regression Accuracy: {logistic_accuracy * 100:.2f}%")
 st.write(f"K-Means Silhouette Score: {kmeans_accuracy:.2f}")
 
 model_names = ["Random Forest", "Logistic Regression", "K-Means"]
-model_accuracies = [0.9873, 0.9509, 0.37]  
-# Create a bar chart
-plt.figure(figsize=(8, 6))
-plt.bar(model_names, model_accuracies, color=['blue', 'green', 'red'])
-plt.xlabel("Models")
-plt.ylabel("Accuracy or Silhouette Score")
-plt.title("Model Comparisons")
-plt.ylim(0, 1)
+accuracies = [rf_accuracy, logistic_accuracy, silhouette_avg]
 
-for i, v in enumerate(model_accuracies):
-    plt.text(i, v, f"{v:.2f}", ha='center', va='bottom', fontsize=12)
-plt.show()
-
+fig, ax = plt.subplots()
+ax.bar(model_names, accuracies)
+ax.set_ylabel("Accuracy")
+ax.set_title("Model Comparison")
+st.pyplot(fig)
 
 import seaborn as sns
+
+data_for_correlation = pd.concat([Xtrain, Ytrain], axis=1)
+correlation_matrix = data_for_correlation.corr()
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+plt.title("Correlation Matrix for Random Forest Model")
+plt.show()
+
+# Assuming you have K-Means cluster assignments in 'kmeans_clusters'
+# Replace 'data_scale_min' with your scaled data
+plt.scatter(data_scale_min['Feature1'], data_scale_min['Feature2'], c=kmeans_clusters, cmap='rainbow')
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
+plt.title("K-Means Clustering Plot")
+plt.show()
+
+sns.regplot(x=Xtest, y=logistic_model.predict(Xtest), scatter_kws={'s': 5})
+plt.xlabel("Actual Values")
+plt.ylabel("Predicted Values")
+plt.title("Regression Plot for Logistic Regression")
+plt.show()
 
 st.write("Checking the outliers of the data.")
 col = data.columns
