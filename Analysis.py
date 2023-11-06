@@ -81,7 +81,7 @@ st.divider()
 st.write("Model Comparisons:")
 st.write(f"Random Forest Accuracy: {rf_accuracy * 100:.2f}%")
 st.write(f"Logistic Regression Accuracy: {logistic_accuracy * 100:.2f}%")
-st.write(f"K-Means Silhouette Score: {kmeans_accuracy:.2f}")
+st.write(f"K-Means Accuracy: {kmeans_accuracy *100:.2f}%")
 
 model_names = ["Random Forest", "Logistic Regression", "K-Means"]
 accuracies = [rf_accuracy, logistic_accuracy, silhouette_avg]
@@ -94,14 +94,14 @@ st.pyplot(fig)
 
 import seaborn as sns
 
-data_for_correlation = pd.concat([Xtrain, Ytrain], axis=1)
+data_for_correlation = Xtrain
 correlation_matrix = data_for_correlation.corr()
-sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+# Create a heatmap of the correlation matrix
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=.5)
 plt.title("Correlation Matrix for Random Forest Model")
 plt.show()
 
-# Assuming you have K-Means cluster assignments in 'kmeans_clusters'
-# Replace 'data_scale_min' with your scaled data
 plt.scatter(data_scale_min['Feature1'], data_scale_min['Feature2'], c=kmeans_clusters, cmap='rainbow')
 plt.xlabel("Feature 1")
 plt.ylabel("Feature 2")
