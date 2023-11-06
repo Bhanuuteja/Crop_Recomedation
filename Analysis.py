@@ -107,7 +107,7 @@ sns.heatmap(conf_matrix_rf, annot=True, fmt='d', cmap='Blues', cbar=False,
             xticklabels=labels, yticklabels=labels)
 plt.xlabel('Predicted')
 plt.ylabel('Actual')
-st.pyplot()
+st.pyplot(plt)
 
 st.write("Confusion Matrix for Logistic Regression:")
 conf_matrix_logistic = confusion_matrix(Ytest, logistic_model.predict(Xtest))
@@ -116,14 +116,14 @@ sns.heatmap(conf_matrix_logistic, annot=True, fmt='d', cmap='Blues', cbar=False,
             xticklabels=labels, yticklabels=labels)
 plt.xlabel('Predicted')
 plt.ylabel('Actual')
-st.pyplot()
+st.pyplot(plt)
 
 # Create a correlation matrix plot
 st.write("Correlation Matrix:")
 correlation_matrix = data_scale.corr()
 plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f", cbar=True)
-st.pyplot()
+st.pyplot(plt)
 
 # Display accuracy of all models
 st.write("Model Comparisons:")
