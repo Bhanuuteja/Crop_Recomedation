@@ -112,8 +112,8 @@ st.write(f"Decision Tree Accuracy: {rf_accuracy * 100:.2f}%")
 st.write(f"Logistic Regression Accuracy: {logistic_accuracy * 100:.2f}%")
 st.write(f"K-Means Accuracy: {kmeans_accuracy *100:.2f}%")
 
-model_names = ["Decision Tree", "Logistic Regression"]
-accuracies = [rf_accuracy, logistic_accuracy]
+model_names = ["Decision Tree", "Logistic Regression","K-Means"]
+accuracies = [rf_accuracy, logistic_accuracy,kmeans_accuracy]
 
 # Reduce the figure size
 fig, ax = plt.subplots(figsize=(4, 4))
