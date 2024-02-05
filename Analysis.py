@@ -126,7 +126,7 @@ ax.set_ylabel("Accuracy")
 ax.set_title("Model Comparison")
 
 # Adjust font size for better visibility
-ax.tick_params(axis='both', labelsize=20)
+ax.tick_params(axis='both', labelsize=8)
 
 # Show the plot in Streamlit app
 st.pyplot(fig)
