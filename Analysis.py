@@ -108,12 +108,12 @@ st.pyplot(plt)
 
 # Display accuracy of all models
 st.write("Model Comparisons:")
-st.write(f"Random Forest Accuracy: {rf_accuracy * 100:.2f}%")
+st.write(f"Decision Tree Accuracy: {rf_accuracy * 100:.2f}%")
 st.write(f"Logistic Regression Accuracy: {logistic_accuracy * 100:.2f}%")
-st.write(f"K-Means Accuracy: {kmeans_accuracy *100:.2f}%")
+#st.write(f"K-Means Accuracy: {kmeans_accuracy *100:.2f}%")
 
-model_names = ["Random Forest", "Logistic Regression", "K-Means"]
-accuracies = [rf_accuracy, logistic_accuracy, silhouette_avg]
+model_names = ["Decision Tree", "Logistic Regression"]
+accuracies = [rf_accuracy, logistic_accuracy]
 
 fig, ax = plt.subplots()
 ax.bar(model_names, accuracies)
