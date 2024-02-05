@@ -115,10 +115,20 @@ st.write(f"Logistic Regression Accuracy: {logistic_accuracy * 100:.2f}%")
 model_names = ["Decision Tree", "Logistic Regression"]
 accuracies = [rf_accuracy, logistic_accuracy]
 
-fig, ax = plt.subplots()
+# Reduce the figure size
+fig, ax = plt.subplots(figsize=(8, 6))
+
+# Plot the bar chart
 ax.bar(model_names, accuracies)
+
+# Set axis labels and title
 ax.set_ylabel("Accuracy")
 ax.set_title("Model Comparison")
+
+# Adjust font size for better visibility
+ax.tick_params(axis='both', labelsize=10)
+
+# Show the plot in Streamlit app
 st.pyplot(fig)
 from streamlit_extras.switch_page_button import switch_page
 if st.button("Predict the Crop using Random Forest "):
