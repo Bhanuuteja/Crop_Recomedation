@@ -116,7 +116,7 @@ model_names = ["Decision Tree", "Logistic Regression"]
 accuracies = [rf_accuracy, logistic_accuracy]
 
 # Reduce the figure size
-fig, ax = plt.subplots(figsize=(8, 6))
+fig, ax = plt.subplots(figsize=(4, 4))
 
 # Plot the bar chart
 ax.bar(model_names, accuracies)
@@ -126,7 +126,7 @@ ax.set_ylabel("Accuracy")
 ax.set_title("Model Comparison")
 
 # Adjust font size for better visibility
-ax.tick_params(axis='both', labelsize=10)
+ax.tick_params(axis='both', labelsize=5)
 
 # Show the plot in Streamlit app
 st.pyplot(fig)
