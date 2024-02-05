@@ -102,7 +102,7 @@ for column in range(len(col)):
 # Create a correlation matrix plot
 st.write("Correlation Matrix:")
 correlation_matrix = data_scale.corr()
-plt.figure(figsize=(10, 8))
+plt.figure(figsize=(8, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f", cbar=True)
 st.pyplot(plt)
 
