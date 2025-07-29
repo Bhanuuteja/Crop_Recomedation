@@ -24,7 +24,7 @@ A web application built with Python and Streamlit that recommends the best crops
 
 You can access the live application here:
 
-➡️ **[Crop Recommendation Streamlit App](https://www.google.com/search?q=https://bhanuuteja-crop-recomedation-app-d7g2v2.streamlit.app/)**
+➡️ **[Crop Recommendation Streamlit App](https://croprecomedation-cssebminiproject.streamlit.app/)**
 
 -----
 
